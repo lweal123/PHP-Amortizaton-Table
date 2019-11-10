@@ -71,6 +71,25 @@ include 'post_inputs.php';
               </tbody>
             </table>
           </div>
+
+          <div id="summaryTable">
+            <table>
+              <thead>
+                <tr>
+                  <th>Total Payments in loan</th>
+                  <th>Total of Payments for the Life of the Loan</th>
+                  <th>Total of Interest Payments for the Life of the Loan</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td id="payments"></td>
+                  <td id="sum"></td>
+                  <td id="totalInterest"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
           <div id="note">
             * Total Monthly PMT includes insurance, taxes, and PMI allocated on a monthly basis.
           </div>
@@ -100,24 +119,25 @@ include 'post_inputs.php';
           </table>
         </div>
       </div>
-      <div id="summaryTable">
-        <table>
-          <thead>
-            <tr>
-              <th>Total Payments in loan</th>
-              <th>Total of Payments for the Life of the Loan</th>
-              <th>Total of Interest Payments for the Life of the Loan</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><?php echo $count; ?></td>
-              <td><?php echo '$' . number_format($totalLoanPayments,2); ?></td>
-              <td><?php echo '$' . number_format($totalInterestPayments,2); ?></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+
     </form>
+    <SCRIPT>
+
+    const formatter = new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+      minimumFractionDigits: 2
+    })
+
+    var payments = <?php echo $count; ?>;
+    document.getElementById('payments').innerHTML = payments;
+
+    var sumId=<?php echo $totalLoanPayments; ?>;
+    document.getElementById("sum").innerHTML=formatter.format(sumId.toFixed(2));
+
+    var totalInterest=<?php echo $totalInterestPayments; ?>;
+    document.getElementById("totalInterest").innerHTML=formatter.format(totalInterest.toFixed(2));
+    
+    </SCRIPT>
    </BODY>
 </HTML>

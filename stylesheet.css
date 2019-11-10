@@ -42,10 +42,12 @@
 
 #tableOne {
   position: relative;
-  display: inline;
+  display: inline-block;
   z-index: 998;
   background: white;
   font-size: 12px;
+  width: 500px;
+  vertical-align: top;
 }
 
 #tableOne table,td,th {
@@ -64,6 +66,29 @@
 #tableOne td{
 text-align: left;
   background-color: white;
+}
+
+
+#summaryTable {
+  position: relative;
+  display: inline-block;
+  background-color: white;
+  width: 500px;
+  height: 100px;
+  z-index: 999;
+  padding: 25px 0px 0px 25px;
+}
+
+#summaryTable table {
+  border-collapse: collapse;
+}
+#summaryTable th {
+  border-bottom: 2px solid black;
+  text-align: center;
+  width: 150px;
+}
+#summaryTable td {
+  text-align: center;
 }
 
 input {
@@ -96,10 +121,10 @@ input {
 
 #note {
   position: relative;
-  display: inline;
+  display: inline-block;
   vertical-align: top;
-  top: -10px;
-  left: 230px;
+  margin-top: 0px;
+  left: 280px;
   font-size: 14px;
   font-weight: bold;
 }
@@ -125,26 +150,5 @@ input {
 }
 
 #amortTable td {
-  text-align: center;
-}
-
-#summaryTable {
-  position: fixed;
-  top: 75px;
-  left: 525px;
-  background-color: white;
-  width: 500px;
-  height: 100px;
-  z-index: 999;
-}
-
-#summaryTable table {
-  border-collapse: collapse;
-}
-#summaryTable th {
-  border-bottom: 2px solid black;
-  text-align: center;
-}
-#summaryTable td {
   text-align: center;
 }
